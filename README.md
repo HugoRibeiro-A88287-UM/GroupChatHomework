@@ -9,17 +9,17 @@ the Pc as a client/clients.
 
 ## Download Project
 
-For ssh conection
+For ssh connection:
 ```bash
     git clone git@github.com:HugoRibeiro-A88287-UM/GroupChatHomework.git
 ```
 
-For https conection
+For https connection:
 ```bash
     git clone https://github.com/HugoRibeiro-A88287-UM/GroupChatHomework.git
 ```
 
-Go to the project directory
+Go to the project directory:
 
 ```bash
     cd GroupChatHomework
@@ -28,21 +28,22 @@ Go to the project directory
 
 To install this project follow the next steps:
 
-1. Open the Makefile and check if CC = aarch64-buildroot-linux-gnu-gcc is uncomment;
 
-2. Comment the CC = gcc line;
+* Open the Makefile and check if CC = aarch64-buildroot-linux-gnu-gcc is uncomment;
 
-3. Open the terminal in the folder directory;
+* Comment the CC = gcc line;
 
-4. Type make clean to clean all the executables and .o files;
+* Open the terminal in the folder directory;
 
-5. Type make create_server to create the server executable;
+* Type make clean to clean all the executables and .o files;
 
-6. Commment the CC = aarch64-buildroot-linux-gnu-gcc line and uncomment CC = gcc line;
+* Type make create_server to create the server executable;
 
-7. Type make create_client to create the client;
+* Commment the CC = aarch64-buildroot-linux-gnu-gcc line and uncomment CC = gcc line;
 
-8. Type make create_sendout to create the send program;
+* Type make create_client to create the client;
+
+* Type make create_sendout to create the send program;
 
 
 
@@ -107,4 +108,5 @@ The available command list is:
 ## Authors
 
 - [@HugoRibeiro](https://github.com/HugoRibeiro-A88287-UM/)
+
 
