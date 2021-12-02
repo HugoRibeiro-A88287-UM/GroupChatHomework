@@ -74,14 +74,14 @@ That option won't be approached here.
 
 To send messages there are two way:
 
-To send a default message to all clients type:
+* Default message to all clients type:
 
 
         make send_default_msg 
     
 OR
 
-To send specific messages:
+* Specific messages:
 	
         ./send.out <command> <message> 
 
