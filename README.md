@@ -65,7 +65,8 @@ That option won't be approached here.
 * Type make transfer_server to send the executable to the raspberry;
 
 * Start executing the server on raspberry with the port number.
-    Use the command: ./TPCServerRasp.elf <PORT> 
+    Use the command: 
+    	./TPCServerRasp.elf <PORT> 
 
 * Type make connect_client to connect the client to the server
 
@@ -74,7 +75,7 @@ That option won't be approached here.
 
 To send messages there are two way:
 
-* Default message to all clients type:
+* Default message to all clients:
 
 
         make send_default_msg 
