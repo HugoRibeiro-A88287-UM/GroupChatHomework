@@ -60,30 +60,30 @@ To run the project, please first connect your raspberry to the computer with
 a ssh connection. It's also possible to use UART connection. 
 That option won't be approached here.
 
+
 * Go to your local project folder
+
+* In PORT and IP put the raspeberry IP and the PORT you want to use
 
 * Type make transfer_server to send the executable to the raspberry;
 
 * Start executing the server on raspberry with the port number.
-    Use the command: 
-    	./TPCServerRasp.elf <PORT> 
+    Use the command: ./TPCServerRasp.elf <PORT> 
 
 * Type make connect_client to connect the client to the server
 
 * Start communicate with your friends :)
 
 
-To send messages there are two way:
-
-* Default message to all clients:
+To Send a default message to all clients
 
 
         make send_default_msg 
     
 OR
 
-* Specific messages:
-	
+To send specific messages:
+
         ./send.out <command> <message> 
 
 
@@ -94,7 +94,7 @@ OR
 The available command list is:
 
 * send 
-
+    
         To send a message for all the clients
 
 * name
@@ -111,5 +111,4 @@ The available command list is:
 ## Authors
 
 - [@HugoRibeiro](https://github.com/HugoRibeiro-A88287-UM/)
-
 
