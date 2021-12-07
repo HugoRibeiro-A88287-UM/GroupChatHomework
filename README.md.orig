@@ -56,6 +56,8 @@ That option won't be approached here.
 
 * Go to your local project folder
 
+* In PORT and IP put the raspeberry IP and the PORT you want to use
+
 * Type make transfer_server to send the executable to the raspberry;
 
 * Start executing the server on raspberry with the port number.
@@ -66,15 +68,25 @@ That option won't be approached here.
 * Start communicate with your friends :)
 
 
-To send messages there are two way:
+<<<<<<< HEAD
 
 To send a default message to all clients:
 
 
+=======
+To Send a default message to all clients
+
+
+>>>>>>> 22d6035d8e58a0d5cd6775dab238075fe10ea180
         make send_default_msg 
     
 To send specific messages:
 
+<<<<<<< HEAD
+=======
+To send specific messages:
+
+>>>>>>> 22d6035d8e58a0d5cd6775dab238075fe10ea180
         ./send.out <command> <message> 
 
 
@@ -85,7 +97,7 @@ To send specific messages:
 The available command list is:
 
 * send 
-
+    
         To send a message for all the clients
 
 * name
@@ -102,5 +114,4 @@ The available command list is:
 ## Authors
 
 - [@HugoRibeiro](https://github.com/HugoRibeiro-A88287-UM/)
-
 
