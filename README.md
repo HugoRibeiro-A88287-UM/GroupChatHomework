@@ -26,32 +26,25 @@ Go to the project directory:
 ```
 ## Installation
 
-To install this project follow the next steps:
+To install this project it's simple. 
 
+* Open the command line into the project folder
 
-* Open the Makefile and check if CC = aarch64-buildroot-linux-gnu-gcc is uncomment;
+* Type nano Makefile
 
-* Comment the CC = gcc line;
+* Change the RASPIP to yours.
 
-* Open the terminal in the folder directory;
+* Save Makefile
 
-* Type make clean to clean all the executables and .o files;
-
-* Type make create_server to create the server executable;
-
-* Commment the CC = aarch64-buildroot-linux-gnu-gcc line and uncomment CC = gcc line;
-
-* Type make create_client to create the client;
-
-* Type make create_sendout to create the send program;
-
-
+* Type: 
+```bash
+	make all
+```
 
 NOTE: 
-    This tutorial is to use raspberry pi 4 as a server. If you don't it, please don't
-	do the first two steps. Instead, comment the CC = aarch64-buildroot-linux-gnu-gcc
-	and let the CC = gcc line always uncomment.
-	Also, don't do step 6. 
+    This tutorial is to use raspberry pi 4 as a server. All the makefile was done to that purpose. 
+    If you want to have your PC as client and server, all you need to do is to change the compiler
+    for the server.
 
 
 ## Run 
@@ -72,16 +65,15 @@ That option won't be approached here.
 * Start communicate with your friends :)
 
 
-To send messages there are two way:
 
-Type:
+To send a default message to all clients:
 
 
-        make send_default_msg to send a default message to all clients
+        make send_default_msg 
     
-OR
+To send specific messages:
 
-        ./send.out <command> <message> to send specific messages
+        ./send.out <command> <message> 
 
 
 

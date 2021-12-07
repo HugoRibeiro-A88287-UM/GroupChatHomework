@@ -1,25 +1,28 @@
-CC = aarch64-buildroot-linux-gnu-gcc 
-#CROSS-COMPILE ?= aarch64-buildroot-linux-gnu-
-#CC = gcc
+CC = gcc
+CCRASP = aarch64-buildroot-linux-gnu-gcc 
 
-CFLAGS = -g -I. 
-DEPS = pthread.h command.h
+CFLAGS = -I. 
 
-IP = 10.42.0.74
+DEPS = -pthread
+DEPS2 = -pthread -lrt
+
+
+RASPIP = 10.42.0.74
 PORT = 5000
 
 
+.PHONY: all
+all:
+	$(CCRASP) TPCServerRasp.c command.c -o TPCServerRasp.elf $(DEPS)
+	$(CC) TPC_ClientPc.c command.c -o TPC_ClientPc.elf $(DEPS2)
+	$(CC) sendmsg.c -o send.out.elf $(DEPS2)
+	 
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+create_server: 
+	$(CCRASP) TPCServerRasp.c command.c -o TPCServerRasp.elf $(DEPS) 
 	
-create_server: TPCServerRasp.o command.o
-	$(CC) -o TPCServerRasp.elf TPCServerRasp.o command.o -lpthread
-	rm command.o
-	
-create_client: TPC_ClientPc.o command.o
-	$(CC) -o TPC_ClientPc TPC_ClientPc.o command.o -lpthread -lrt
-	rm command.o
+create_client:
+	$(CC) TPC_ClientPc.c command.c -o TPC_ClientPc.elf $(DEPS2)
 
 send_default_msg:
 	./send.out send HI everyone!
@@ -28,22 +31,22 @@ create_sendout:
 	gcc sendmsg.c -o send.out -lrt
 	
 connect_client:
-	./TPC_ClientPc $(IP) $(PORT) &
+	./TPC_ClientPc.elf $(RASPIP) $(PORT) &
 	
 
 
 
 .PHONY: clean 
 clean: 
-	rm -f *.o TPCServerRasp.elf TPC_ClientPc
+	rm -f  TPCServerRasp.elf TPC_ClientPc.elf send.out.elf
 	
 clean_client:
-	rm -f TPC_ClientPc.o TPC_ClientPc command.o
+	rm -f TPC_ClientPc.elf command.o
 	
 clean_server:
-	rm -f TPCServerRasp.elf TPCServerRasp.o command.o
+	rm -f TPCServerRasp.elf command.o
 	
 transfer_server: 
-	scp TPCServerRasp.elf led.ko root@$(IP):/etc
+	scp TPCServerRasp.elf led.ko root@$(RASPIP):/etc
 	
 	
