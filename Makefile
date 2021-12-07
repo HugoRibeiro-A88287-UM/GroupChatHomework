@@ -1,7 +1,7 @@
 CC = gcc
 CCRASP = aarch64-buildroot-linux-gnu-gcc 
 
-CFLAGS = -I. 
+CFLAGS = -g -I. 
 
 DEPS = -pthread
 DEPS2 = -pthread -lrt
