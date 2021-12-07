@@ -8,7 +8,8 @@
 #include <string.h>
 #include <pthread.h>
 #include <errno.h>
-#include <mqueue.h> 
+#include <mqueue.h>
+#include <unistd.h>  
 
 #include "command.h"
 
@@ -202,6 +203,33 @@ int main(int count, char *args[])
 	if ( connect(sd, (struct sockaddr*)&addr, sizeof(addr)) == 0)
 	{
 		pthread_t send,receive,status;
+		pid_t pid,sid;
+
+		pid = fork();
+
+		if(pid < 0)
+			panic("Fork Failure");
+		
+		if (pid > 0) // parent process (exit)
+		{
+			printf("Closing Parent Process: %d \n ", pid);
+			exit(EXIT_SUCCESS);
+		}
+
+		// create a new session
+		sid = setsid();
+
+		if(sid < 0)
+			panic("sid failure");
+
+		// make '/' the root directory
+		if ( chdir("/") < 0 )
+			panic("chdir");
+
+		umask(0);
+		close(STDIN_FILENO);  // close standard input file descriptor
+		close(STDOUT_FILENO); // close standard output file descriptor
+		close(STDERR_FILENO); // close standard error file descriptor
 
 		client_status = online;
 		aux_status = online;

@@ -31,7 +31,7 @@ create_sendout:
 	gcc sendmsg.c -o send.out -lrt
 	
 connect_client:
-	./TPC_ClientPc.elf $(RASPIP) $(PORT) &
+	./TPC_ClientPc.elf $(RASPIP) $(PORT)
 	
 
 
